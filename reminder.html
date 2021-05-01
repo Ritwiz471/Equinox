@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>
-      Reminder
-    </title>
+    <link rel = "stylesheet" href = "https://www.w3schools.com/w3css/4/w3.css">
+    <link rel = "stylesheet" href = "reminder.css">
+    <title>Reminder</title>
 
     <style>
       .inline {
@@ -13,28 +13,35 @@
   </head>
 
   <body>
-    <section id="main-section">
-      <form id="add-form" onsubmit="">
-        <label for="event">Event: </label>
-        <input type="text" name="event" id="event" />
-        <br />
-        <label for="time">Date and time:</label>
-        <input type="datetime-local" name="time" id="time" />
-        <br />
-        <button type="button" onclick="addToList()">Add to list</button>
-      </form>
-      <br />
 
-      <table class="center" id="active-reminders" hidden="true" style="border: 2px solid black; width: 70%;">
-        <tr>
-          <th>Reminders</th>
-        </tr>
-      </table>
-    </section>
+    <h1>Set a reminder!</h1>
 
-    <section id="request-perm" hidden="true">
-      <p>Please enable notifications to use this app</p>
-    </section>
+    <form id ="add-form" onsubmit="">
+      <div class = "details" id = "grad">
+        <div class = "event">
+          <label for="event">Event</label> <br>
+          <input class = "w3-input w3-border w3-round" type="text" name="event" id="event"/>
+        </div>
+        <br />
+  
+        <div class = "time">
+          <label for="time">Date and time</label><br>
+          <input class = "w3-input w3-border w3-round" type="datetime-local" name="time" id="time"/>
+        </div>
+        <br />
+        <div class = "list">
+          <button type="button" class = "add" onclick="addToList()">Add to list</button>
+        </div>
+      </div><br>
+    
+    </form>
+    <br />
+
+    <table class="center" id="active-reminders" hidden="true">
+      <tr>
+        <th class = "tabletitle">Reminders</th>
+      </tr>
+    </table>
 
     <script type="text/javascript">
       const form =  document.getElementById("add-form");
@@ -135,7 +142,5 @@
         return new Array();
       }
     </script>
-
-    <script src="scripts/main.js"></script>
   </body>
 </html>
