@@ -8,6 +8,18 @@ body{
     background-size: cover;
 }
 
+.logo {
+    width: "100px";
+    height: "100px";
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.logo img {
+    width: 100%;
+}
+
 form{
     align-items: center;
     margin:100px auto;
@@ -17,12 +29,33 @@ form{
     border-radius: 30px;
 }
 
+form input {
+    font-size: 18px;
+    padding: 10px 20px 10px 5px;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+form input[type = "email"], form input[type = "password"], form input[type = "text"] {
+    font-size: 18px;
+    padding: 10px 20px 10px 5px;
+    border: 1px solid #3498db;
+    outline: none;
+    background: none;
+    border-radius: 24px;
+    margin : 5px;
+    text-align: center;
+}
+
 h2{
     text-align: center;
-    color: #505050;
+    color: lightgreen;
     font-weight: bolder;
     font-size: 35px;
     font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
+    padding: auto;
 }
 
 .style{
@@ -35,9 +68,13 @@ h2{
 .name .surname .email .password{
     display: block;
     border-radius: 30px;
-    border: 1px solid rgba(0,0,0,0,2);
+    border: 1px solid  #3498db;
     padding: 10px;
     margin: 10px 0;
+    text-align: center;
+    outline: none;
+    width: 200px;
+    transition: 0.25s;
 }
 
 .signup{
@@ -62,12 +99,4 @@ h2{
 a{
     text-decoration: none;
     color: #505050;
-}
-
-form input{
-    font-size: 18px;
-    padding: 10px 20px 10px 5px;
-    border: none;
-    outline: none;
-    background: none;
 }
