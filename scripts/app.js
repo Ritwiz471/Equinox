@@ -121,10 +121,20 @@ function signIn(){
         return checkUserSIPassword();
     }else{
         const au=firebase.auth();
-        au.signInWithEmailAndPassword(userSIEmail, userSIPassword);
+        const promise=au.signInWithEmailAndPassword(userSIEmail, userSIPassword);
+        promise.catch(e => console.log(e.message));
 alert("Successfully logged in");
     }
 }
+
+firebase.auth().onAuthStateChanged(firebaseUser =>{
+    if(firebaseUser)
+    console.log(firebaseUser);
+    else
+    console.log("Not logged in");
+
+})
+
 
 
 // xxxxxxxxxx Working For Sign Out xxxxxxxxxx
