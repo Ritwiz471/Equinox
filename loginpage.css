@@ -14,6 +14,7 @@ form{
     width:200px;
     background: url("bgfix.png");
     padding: 60px;
+    border-radius: 30px;
 }
 
 h2{
