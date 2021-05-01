@@ -49,6 +49,7 @@
       const form =  document.getElementById("add-form");
       const table = document.getElementById("active-reminders");
       events = getEvents();
+      updateTable();
 
       form.addEventListener("keypress", function(event) {
         if (event.keyCode == 13) {
