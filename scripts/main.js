@@ -1,6 +1,8 @@
 "use strict"
 
 const publicKey = "BAYe4RIspczWYaIH6kXnCe1NvTfHBJdS5S-egM6s8hZDq4ZUunyg70I71xtdXsr5pbfpl641cT4o6L7aH9Rzplg";
+const privateKey = "QXmU6IYGY10WxRuFk-TyF1ejQcIa26xoiDOgTN7L3eA";
+let sub = null;
 
 let isSubscribed = false;
 let swRegistration = null;
@@ -77,6 +79,34 @@ function subscribe() {
   })
 }
 
-function updateSubOnServer() {
-  // TODO: Send to server
+function updateSubOnServer(subscription) {
+  sub = JSON.stringify(subscription);
+}
+
+function pushNot(name) {
+  fetch('/api/send-push-msg', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      subscription: JSON.parse(sub),
+      data: name,
+      applicationKeys: {
+        public: publicKey,
+        private: privateKey,
+      }
+    })
+  })
+  .catch(function(err) {
+    console.log("No subscription available");
+  })
+  .then((response) => {
+    if (response.status !== 200) {
+      return response.text()
+      .then((responseText) => {
+        throw new Error(responseText);
+      });
+    }
+  });
 }
