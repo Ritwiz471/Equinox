@@ -3,6 +3,8 @@
     <head>
         <link rel = "stylesheet" href = "loginpage.css">
         <link rel = "stylesheet" href = "icons.css">
+        <script type="text/javascript" src="app.js"></script>
+
         <title>Login page</title>
     </head>
     <body>
@@ -26,7 +28,7 @@
             </div>
 
             <div class = "login"><br>
-                <input type = "submit" value = "Login">
+                <input type = "submit" value = "Login" onclick="signIn()">
             </div>
 
             <div class = "link">
@@ -34,7 +36,9 @@
                 <a href = "signup.html">Create account</a>   
             </div>
         </form>
-        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
