@@ -3,6 +3,8 @@
     <head>
         <link rel = "stylesheet" href = "signuppage.css">
         <link rel = "stylesheet" href = "icons.css">
+        <script type="text/javascript" src="app.js"></script>
+
         <title>Sign up page</title>
     </head>
     <body>
@@ -17,7 +19,7 @@
         <form>
             <div class = "name">
                 <label for = "name">Enter name</label><br>
-                <input type = "text" id = "name">
+                <input type = "text" id = "fname">
             </div>
 
             <div class = "surname">
@@ -35,7 +37,7 @@
             </div>
 
             <div class = "signup"><br>
-                <input type = "submit" value = "Sign Up">
+                <input type = "button" value = "Sign Up" onclick="signUp()">
             </div>
 
             <div class = "link">
