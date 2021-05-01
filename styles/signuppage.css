@@ -4,33 +4,52 @@
 body{
     width: 100%;
     height: 100vh;
-    background: url("bg-4.jpg");
+    background: url("bgfix.png");
     background-size: cover;
 }
 
 .logo {
-    width: "100px";
-    height: "100px";
+    width: "150px";
+    height: "150px";
     border-radius: 50%;
     margin: 0 auto;
     margin-bottom: 10px;
 }
 
 .logo img {
-    width: 100%;
+    width: 50%;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-left: 50px;
 }
 
 form{
     align-items: center;
     margin:100px auto;
     width:200px;
-    background: url("bgfix.png");
+    background: lightcyan;
     padding: 60px;
     border-radius: 30px;
-    text-align: center;
+}
+
+form input {
+    font-size: 18px;
+    padding: 10px 20px 10px 5px;
+    border: none;
     outline: none;
-    width: 200px;
-    transition: 0.25s;
+    background: none;
+}
+
+form input[type = "email"], form input[type = "password"], form input[type = "text"] {
+    font-size: 18px;
+    padding: 10px 20px 10px 5px;
+    border: 1px solid #3498db;
+    outline: none;
+    background: none;
+    border-radius: 24px;
+    margin : 5px;
+    text-align: center;
 }
 
 h2{
@@ -38,32 +57,22 @@ h2{
     color: lightgreen;
     font-weight: bolder;
     font-size: 35px;
+    font-family: cursive;
     font-family: 'Times New Roman', Times, serif;
     padding: auto;
 }
 
-form input[type = "email"], form input[type = "password"] {
-    font-size: 18px;
-    padding: 10px 20px 10px 5px;
-    border: 1px solid #3498db;
-    outline: none;
-    background: none;
-    border-radius: 24px;
-    margin: 5px;
-    text-align: center;
+.style{
+    color: lightgreen;
+    font-weight: lighter;
+    font-size: 20px;
+    font-family: cursive;
 }
 
-form input[type = "submit"] {
-    font-size: 18px;
-    padding: 10px 20px 10px 5px;
-    border: none;
-    outline: none;
-    background: none;
-}
-.email .password {
+.name .surname .email .password{
     display: block;
     border-radius: 30px;
-    border: 1px solid #3498db;
+    border: 1px solid  #3498db;
     padding: 10px;
     margin: 10px 0;
     text-align: center;
@@ -72,14 +81,7 @@ form input[type = "submit"] {
     transition: 0.25s;
 }
 
-.form svg {
-    height: 25px;
-    margin-bottom: -5px;
-    margin-left: 10px;
-    margin-right: 5px;
-}
-
-.login {
+.signup{
     text-align: center;
     margin-top: 10%;
     line-height: 0;
@@ -101,11 +103,4 @@ form input[type = "submit"] {
 a{
     text-decoration: none;
     color: #505050;
-}
-
-.style{
-    color: lightgreen;
-    font-weight: lighter;
-    font-size: 20px;
-    font-family: cursive;
 }
