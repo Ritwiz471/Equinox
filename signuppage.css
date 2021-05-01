@@ -4,7 +4,7 @@
 body{
     width: 100%;
     height: 100vh;
-    background: url(../img/bg-4.jpg) top center no-repeat;
+    background: url(../img/bgfix.png);
     background-size: cover;
 }
 
@@ -12,7 +12,7 @@ form{
     align-items: center;
     margin:100px auto;
     width:200px;
-    background: url(../img/bgfix.png) top center no-repeat;
+    background: url(../img/bg4.png);
     padding: 60px;
 }
 
@@ -24,15 +24,14 @@ h2{
     font-family: cursive;
 }
 
-form input{
-    font-size: 18px;
-    padding: 10px 20px 10px 5px;
-    border: none;
-    outline: none;
-    background: none;
+.style{
+    color: lightgreen;
+    font-weight: lighter;
+    font-size: 20px;
+    font-family: cursive;
 }
 
-.email .password {
+.name .surname .email .password{
     display: block;
     border-radius: 30px;
     border: 1px solid rgba(0,0,0,0,2);
@@ -40,14 +39,7 @@ form input{
     margin: 10px 0;
 }
 
-.form svg{
-    height: 25px;
-    margin-bottom: -5px;
-    margin-left: 10px;
-    margin-right: 5px;
-}
-
-.login {
+.signup{
     text-align: center;
     margin-top: 10%;
     line-height: 0;
@@ -71,9 +63,10 @@ a{
     color: #505050;
 }
 
-.style{
-    color: lightgreen;
-    font-weight: lighter;
-    font-size: 20px;
-    font-family: cursive;
+form input{
+    font-size: 18px;
+    padding: 10px 20px 10px 5px;
+    border: none;
+    outline: none;
+    background: none;
 }
