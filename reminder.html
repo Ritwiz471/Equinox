@@ -5,76 +5,131 @@
       Reminder
     </title>
 
-    <body>
-      <form id="add-form" onsubmit="">
-        <label for="event">Event: </label>
-        <input type="text" name="event" id="event" />
-        <br />
-        <label for="time">Date and time:</label>
-        <input type="datetime-local" name="time" id="time" />
-        <br />
-        <button type="button" onclick="addToList()">Add to list</button>
-      </form>
-
-      <table id="active-reminders" hidden="true" style="border: 2px solid black;">
-        <colgroup>
-          <col style="margin-right: auto;">
-          <col style="margin-left: auto">
-        </colgroup>
-
-        <tr>
-          <th colspan="2">Reminders</th>
-        </tr>
-      </table>
-
-      <script type="text/javascript">
-        const form =  document.getElementById("add-form");
-        const table = document.getElementById("active-reminders");
-        events = getEvents();
-
-        form.addEventListener("keypress", function(event) {
-          if (event.keyCode == 13) {
-            addToList();
-            event.preventDefault();
-            return false;
-          }
-        });
-
-        function addToList() {
-          var name = document.getElementById("event").value;
-          var time = document.getElementById("time").value;
-          var toAdd = {
-            name: name,
-            time: time
-          };
-          
-          events.push(toAdd);
-          console.log(toAdd.time);
-
-          updateTable(1);
-        }
-
-        function updateTable(newRows) {
-          var rowCount = table.rows.length;
-          var row = table.insertRow();
-          var eventCol = row.insertCell();
-          var timeCol = row.insertCell();
-          console.log(rowCount - 1);
-          eventCol.value = events[rowCount - 1].name;
-          timeCol.value = events[rowCount - 1].time;
-
-          if (events.length > 0) {
-            table.hidden = false;
-          } else {
-            table.hidden = true;
-          }
-        }
-
-        function getEvents() {
-          // TODO: Get events from database
-          return new Array();
-        }
-      </script>
-    </body>
+    <style>
+      .inline {
+        display: inline-block;
+      }
+    </style>
   </head>
+
+  <body>
+    <form id="add-form" onsubmit="">
+      <label for="event">Event: </label>
+      <input type="text" name="event" id="event" />
+      <br />
+      <label for="time">Date and time:</label>
+      <input type="datetime-local" name="time" id="time" />
+      <br />
+      <button type="button" onclick="addToList()">Add to list</button>
+    </form>
+    <br />
+
+    <table class="center" id="active-reminders" hidden="true" style="border: 2px solid black; width: 70%;">
+      <tr>
+        <th>Reminders</th>
+      </tr>
+    </table>
+
+    <script type="text/javascript">
+      const form =  document.getElementById("add-form");
+      const table = document.getElementById("active-reminders");
+      events = getEvents();
+
+      form.addEventListener("keypress", function(event) {
+        if (event.keyCode == 13) {
+          addToList();
+          event.preventDefault();
+          return false;
+        }
+      });
+
+      function addToList() {
+        var nameInput = document.getElementById("event");
+        var timeInput = document.getElementById("time");
+
+        var name = nameInput.value;
+        var time = timeInput.value;
+        if (name === "" || time === "") return false;
+
+        var toAdd = {
+          name: name,
+          time: time
+        };
+
+        form.reset();
+        
+        events.push(toAdd);
+        console.log(toAdd);
+
+        updateTable();
+      }
+
+      function removeFromList(index) {
+        console.log(index);
+        for (var i = 0; i < events.length-1; i++) {
+          if (i >= index) {
+            events[i] = events[i+1];
+            table.rows[i+1].childNodes[0].pos--;
+          }
+        }
+        events.pop();
+
+        updateTable();
+      }
+
+      function updateTable() {
+       while (table.rows.length > 1) {
+         table.deleteRow(1);
+       }
+
+       for (var i = 0; i < events.length; i++) {
+          var row = table.insertRow();
+          var remindSet = document.createElement("div");
+          var eventCol = document.createElement("div");
+          var timeCol = document.createElement("div");
+          var deleteBtn = document.createElement("button");
+          
+          eventCol.style.textAlign = "left";
+          eventCol.style.width = "40%";
+          timeCol.style.textAlign = "right";
+          timeCol.style.width = "40%";
+
+          deleteBtn.type = "button";
+          deleteBtn.style.width = "20%";
+
+          timeCol.className = "inline";
+          eventCol.className = "inline";
+          deleteBtn.className = "inline";
+
+          eventCol.innerHTML = events[i].name;
+          timeCol.innerHTML = events[i].time;
+          deleteBtn.innerHTML = "Remove";
+
+          remindSet.pos = i;
+          remindSet.appendChild(eventCol);
+          remindSet.appendChild(timeCol);
+          remindSet.appendChild(deleteBtn);
+          row.appendChild(remindSet);
+
+          deleteBtn.parent = remindSet
+          deleteBtn.addEventListener("click", function(event) {
+            removeFromList(this.parentElement.pos);
+          });
+       }
+
+        if (events.length > 0) {
+          table.hidden = false;
+        } else {
+          table.hidden = true;
+        }
+      }
+
+      function getEvents() {
+        // TODO: Get events from database
+        return new Array();
+      }
+    </script>
+
+    <script src="scripts/main.js"></script>
+  </body>
 </html>
