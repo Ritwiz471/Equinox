@@ -1,0 +1,103 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;  
+    text-align: center;
+    background-image: url(reminderbg.png);
+    background-size: cover;
+}
+
+
+h1 {
+    color: #02353c;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 40px;
+    font-weight: 900;
+    background-color: rgb(218, 218, 218);
+}
+
+.details{
+
+    text-align: center;
+    background-color:#9cd8c4;
+    color:#02353c;
+    font-size: 30px;
+    font-weight:normal;
+    width: 50%; 
+    padding:40px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 40px;
+}
+input{
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-image: linear-gradient(rgb(216, 216, 216), white);
+
+}
+button {
+
+    border: none;
+    color: white;
+    padding: 2px 6px;
+    text-decoration: none;
+    /*margin: 2px 1px;*/
+    cursor: pointer;
+    font-size: 20px;
+    background-image: linear-gradient(#02353c,#1d4d53);
+    border-radius: 10px;
+}
+table, th, td {
+    border: 5px solid #02353c;
+}
+table  {
+    width: 70%;
+    padding: 10px;
+    margin: 10px;
+    font-size: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+tr:nth-child(odd) {
+    background-color:#9cd8c4;
+    color:  #1d4d53;
+}
+tr:nth-child(even) {
+    background-color: rgb(218, 218, 218);
+    color:  #1d4d53;
+}
+
+.tabletitle {
+    color:#02353c ;
+    border:#9cd8c4;
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
