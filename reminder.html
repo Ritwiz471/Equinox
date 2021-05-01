@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Reminder
+    </title>
+
+    <body>
+      <form id="add-form" onsubmit="">
+        <label for="event">Event: </label>
+        <input type="text" name="event" id="event" />
+        <br />
+        <label for="time">Date and time:</label>
+        <input type="datetime-local" name="time" id="time" />
+        <br />
+        <button type="button" onclick="addToList()">Add to list</button>
+      </form>
+
+      <table id="active-reminders" hidden="true" style="border: 2px solid black;">
+        <colgroup>
+          <col style="margin-right: auto;">
+          <col style="margin-left: auto">
+        </colgroup>
+
+        <tr>
+          <th colspan="2">Reminders</th>
+        </tr>
+      </table>
+
+      <script type="text/javascript">
+        const form =  document.getElementById("add-form");
+        const table = document.getElementById("active-reminders");
+        events = getEvents();
+
+        form.addEventListener("keypress", function(event) {
+          if (event.keyCode == 13) {
+            addToList();
+            event.preventDefault();
+            return false;
+          }
+        });
+
+        function addToList() {
+          var name = document.getElementById("event").value;
+          var time = document.getElementById("time").value;
+          var toAdd = {
+            name: name,
+            time: time
+          };
+          
+          events.push(toAdd);
+          console.log(toAdd.time);
+
+          updateTable(1);
+        }
+
+        function updateTable(newRows) {
+          var rowCount = table.rows.length;
+          var row = table.insertRow();
+          var eventCol = row.insertCell();
+          var timeCol = row.insertCell();
+          console.log(rowCount - 1);
+          eventCol.value = events[rowCount - 1].name;
+          timeCol.value = events[rowCount - 1].time;
+
+          if (events.length > 0) {
+            table.hidden = false;
+          } else {
+            table.hidden = true;
+          }
+        }
+
+        function getEvents() {
+          // TODO: Get events from database
+          return new Array();
+        }
+      </script>
+    </body>
+  </head>
+</html>
