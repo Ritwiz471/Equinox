@@ -13,22 +13,28 @@
   </head>
 
   <body>
-    <form id="add-form" onsubmit="">
-      <label for="event">Event: </label>
-      <input type="text" name="event" id="event" />
+    <section id="main-section">
+      <form id="add-form" onsubmit="">
+        <label for="event">Event: </label>
+        <input type="text" name="event" id="event" />
+        <br />
+        <label for="time">Date and time:</label>
+        <input type="datetime-local" name="time" id="time" />
+        <br />
+        <button type="button" onclick="addToList()">Add to list</button>
+      </form>
       <br />
-      <label for="time">Date and time:</label>
-      <input type="datetime-local" name="time" id="time" />
-      <br />
-      <button type="button" onclick="addToList()">Add to list</button>
-    </form>
-    <br />
 
-    <table class="center" id="active-reminders" hidden="true" style="border: 2px solid black; width: 70%;">
-      <tr>
-        <th>Reminders</th>
-      </tr>
-    </table>
+      <table class="center" id="active-reminders" hidden="true" style="border: 2px solid black; width: 70%;">
+        <tr>
+          <th>Reminders</th>
+        </tr>
+      </table>
+    </section>
+
+    <section id="request-perm" hidden="true">
+      <p>Please enable notifications to use this app</p>
+    </section>
 
     <script type="text/javascript">
       const form =  document.getElementById("add-form");
