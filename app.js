@@ -5,9 +5,7 @@ function checkUserFullName(){
         flag = true;
     }
     if(flag){
-        document.getElementById("userFullNameError").style.display = "block";
-    }else{
-        document.getElementById("userFullNameError").style.display = "none";
+        alert("Invalid")    
     }
 }
 // xxxxxxxxxx User Surname Validation xxxxxxxxxx
@@ -18,9 +16,7 @@ function checkUserSurname(){
         flag = true;
     }
     if(flag){
-        document.getElementById("userSurnameError").style.display = "block";
-    }else{
-        document.getElementById("userSurnameError").style.display = "none";
+        alert("Invalid")    
     }
 }
 // xxxxxxxxxx Email Validation xxxxxxxxxx
@@ -34,10 +30,9 @@ function checkUserEmail(){
         flag = true;
     }
     if(flag){
-        document.getElementById("userEmailError").style.display = "block";
-    }else{
-        document.getElementById("userEmailError").style.display = "none";
+        alert("Invalid")    
     }
+    
 }
 // xxxxxxxxxx Password Validation xxxxxxxxxx
 function checkUserPassword(){
@@ -50,9 +45,7 @@ function checkUserPassword(){
         flag = true;
     }    
     if(flag){
-        document.getElementById("userPasswordError").style.display = "block";
-    }else{
-        document.getElementById("userPasswordError").style.display = "none";
+        alert("Invalid")    
     }
 }
 
@@ -79,38 +72,10 @@ function signUp(){
     }else if(checkUserPasswordValid == null){
         return checkUserPassword();
     }else{
-        firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).then((success) => {
-            var user = firebase.auth().currentUser;
-            var uid;
-            if (user != null) {
-                uid = user.uid;
-            }
-            var firebaseRef = firebase.database().ref();
-            var userData = {
-                userFullName: userFullName,
-                userSurname: userSurname,
-                userEmail: userEmail,
-                userPassword: userPassword,
-                userFb: "https://www.facebook.com/",
-                userTw: "https://twitter.com/",
-                userGp: "https://plus.google.com/",
-            }
-            firebaseRef.child(uid).set(userData);
-            swal('Your Account Created','Your account was created successfully, you can log in now.',
-            ).then((value) => {
-                setTimeout(function(){
-                    window.location.replace("login.html");
-                }, 1000)
-            });
-        }).catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            swal({
-                type: 'error',
-                title: 'Error',
-                text: "Error",
-            })
-        });
+        const au=firebase.auth();
+
+        au.createUserWithEmailAndPassword(userEmail, userPassword);
+        alert("Account created successfully");
     }
 }
 // xxxxxxxxxx Working For Sign In Form xxxxxxxxxx
@@ -125,10 +90,7 @@ function checkUserSIEmail(){
         flag = true;
     }
     if(flag){
-        document.getElementById("userSIEmailError").style.display = "block";
-    }else{
-        document.getElementById("userSIEmailError").style.display = "none";
-    }
+alert("Invalid");    }
 }
 // xxxxxxxxxx Sign In Password Validation xxxxxxxxxx
 function checkUserSIPassword(){
@@ -141,10 +103,7 @@ function checkUserSIPassword(){
         flag = true;
     }    
     if(flag){
-        document.getElementById("userSIPasswordError").style.display = "block";
-    }else{
-        document.getElementById("userSIPasswordError").style.display = "none";
-    }
+alert("invalid");    }
 }
 // xxxxxxxxxx Check email or password exsist in firebase authentication xxxxxxxxxx    
 function signIn(){
@@ -161,24 +120,9 @@ function signIn(){
     }else if(checkUserPasswordValid == null){
         return checkUserSIPassword();
     }else{
-        firebase.auth().signInWithEmailAndPassword(userSIEmail, userSIPassword).then((success) => {
-            swal({
-                type: 'successfull',
-                title: 'Succesfully signed in', 
-            }).then((value) => {
-                setTimeout(function(){
-                    window.location.replace("reminder.html");
-                }, 1000)
-            });
-        }).catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            swal({
-                type: 'error',
-                title: 'Error',
-                text: "Error",
-            })
-        });
+        const au=firebase.auth();
+        au.signInWithEmailAndPassword(userSIEmail, userSIPassword);
+alert("Successfully logged in");
     }
 }
 

@@ -3,6 +3,32 @@
     <head>
         <link rel = "stylesheet" href = "signuppage.css">
         <link rel = "stylesheet" href = "icons.css">
+         <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
+
+
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBVR0UfRS2r8uVsr43BZAJrpfe_-MYo7Y0",
+    authDomain: "remory-626ab.firebaseapp.com",
+    projectId: "remory-626ab",
+    storageBucket: "remory-626ab.appspot.com",
+    messagingSenderId: "756160913449",
+    appId: "1:756160913449:web:ffa3a46e1c739f7912bc38",
+    measurementId: "G-XGQ04FCXTG"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
         <script type="text/javascript" src="app.js"></script>
 
         <title>Sign up page</title>
@@ -13,7 +39,7 @@
                     <h2>Sign up</h2>
                 </div>
                 <div class = "name">
-                    <input type = "text" id = "name" placeholder = "First name">
+                    <input type = "text" id = "fname" placeholder = "First name">
                 </div>
     
                 <div class = "surname">
