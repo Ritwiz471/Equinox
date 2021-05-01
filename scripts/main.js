@@ -6,40 +6,77 @@ let isSubscribed = false;
 let swRegistration = null;
 
 function toUInt8(base64String) {
-    const padding = '='.repeat((4 - base64String.length % 4) % 4);
-    const base64 = (base64String + padding)
-      .replace(/\-/g, '+')
-      .replace(/_/g, '/');
-    var bin_string = window.atob(base64);
-    console.log(bin_string);
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding)
+  .replace(/\-/g, '+')
+  .replace(/_/g, '/');
+  const binString = window.atob(base64);
+  const output = new Uint8Array(binString.length);
+
+  for (let i = 0; i < binString.length; ++i) {
+    output[i] = binString.charCodeAt(i);
+  }
+  return output;
 }
 
 if ("serviceWorker" in navigator && "PushManager" in window) {
-    console.log("Supported");
+  console.log("Supported");
 
-    navigator.serviceWorker.register("sw.js")
-    .then(function(swReg) {
-        console.log("Registered", swReg);
+  navigator.serviceWorker.register("sw.js")
+  .then(function(swReg) {
+    console.log("Registered", swReg);
 
-        swRegistration = swReg;
+    swRegistration = swReg;
 
-        getPermission();
-    })
-    .catch(function(error) {
-        console.log("Service Worker error", error);
-    });
+    getPermission();
+  })
+  .catch(function(error) {
+    console.log("Service Worker error", error);
+  });
 }
 
 function getPermission() {
-    toUInt8(publicKey);
+  subscribe();
 
-    swRegistration.pushManager.getSubscription()
-    .then(function(subscription) {
-        isSubscribed = !(subscription === null);
+  swRegistration.pushManager.getSubscription()
+  .then(function(subscription) {
+    isSubscribed = !(subscription === null);
+    
+    updateSubOnServer(subscription);
+    console.log(isSubscribed);
 
-        if (!isSubscribed) {
-            document.getElementById("main-section").hidden = true;
-            document.getElementById("request-perm").hidden = false;
-        }
-    });
+    updateUI();
+  });
+}
+
+function updateUI() {
+  if (!isSubscribed) {
+    document.getElementById("submit-button").disabled = true;
+  } else {
+    document.getElementById("submit-button").disabled = false;
+  }
+}
+
+function subscribe() {
+  const serverKey = toUInt8(publicKey);
+  swRegistration.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey: serverKey
+  })
+  .then(function(subscription) {
+    console.log("Subscribed");
+    updateSubOnServer(subscription);
+    isSubscribed = true;
+
+    updateUI();
+  })
+  .catch(function(err) {
+    console.log("Failed to Subscribe", err);
+
+    updateUI();
+  })
+}
+
+function updateSubOnServer() {
+  // TODO: Send to server
 }
