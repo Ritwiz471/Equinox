@@ -20,7 +20,7 @@ body{
     width: 50%;
     border-radius: 50%;
     margin: 0 auto;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     margin-left: 15px;
 }
 
@@ -94,8 +94,12 @@ form input[type = "submit"] {
     background: #9ceca1;
     box-shadow: 0px 5px 30px rgb(65 240 94 / 40%);
     border: none;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 5px;
+    height: 10px;
+    width: 50%;
+    margin-left: 50px;
+    align-content: center;
 }
 
 .link{
